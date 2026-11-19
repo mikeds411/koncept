@@ -40,7 +40,7 @@ Importe este repositório na Vercel com o framework **Other** (sem comando de bu
 
 ## Antes de publicar
 
-- Troque `https://SEU-DOMINIO.com.br` pelo endereço real em `index.html`, `robots.txt`, `sitemap.xml` e `llms.txt`.
+- O site está em https://koncept-three.vercel.app. Se trocar de domínio, atualize o endereço em `index.html`, `robots.txt`, `sitemap.xml` e `llms.txt`.
 - Envie as fotos reais para `assets/fotos` (veja "Como colocar ou trocar as fotos").
 - Ao mudar as perguntas frequentes, atualize também o bloco JSON-LD `FAQPage` no `<head>`.
 - O cronograma de aulas fica na seção `#aulas`; o status automático usa `AVISO_ANTES_MIN` e `DURACAO_AULA_MIN` no script.
