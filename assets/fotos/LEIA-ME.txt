@@ -1,0 +1,21 @@
+COMO COLOCAR AS FOTOS REAIS NO SITE
+===================================
+
+Basta enviar a foto para esta pasta (assets/fotos) com o NOME EXATO abaixo.
+O site encontra a foto sozinho e a coloca no lugar certo. Não precisa mexer em código.
+
+  NOME DO ARQUIVO      ONDE APARECE NO SITE                TAMANHO SUGERIDO
+  ---------------      --------------------                ----------------
+  ambiente.jpg         Seção "Sobre a Koncept"             1200 x 900  (deitada)
+  musculacao.jpg       Galeria - quadro grande             1200 x 1200 (quadrada)
+  cardio.jpg           Galeria - quadro pequeno            800 x 600   (deitada)
+  sala-aulas.jpg       Galeria - quadro pequeno            800 x 600   (deitada)
+  fachada.jpg          Galeria - quadro largo              1200 x 600  (bem deitada)
+
+REGRAS IMPORTANTES
+- Use letras minúsculas, sem acento e sem espaço (ex.: musculacao.jpg, e não Musculação.JPG).
+- Formatos aceitos: .jpg, .jpeg, .png ou .webp.
+- Prefira fotos com menos de 500 KB para o site carregar rápido.
+  Para diminuir o tamanho de graça: https://squoosh.app
+- Para TROCAR uma foto, envie outra com o mesmo nome (ela substitui a antiga).
+- Enquanto a foto não for enviada, o site mostra o aviso "FOTO REAL AQUI" naquele lugar.

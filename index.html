@@ -209,6 +209,11 @@
     .photo-slot svg { width: 44px; height: 44px; stroke: var(--green); fill: none; stroke-width: 1.6; margin: 0 auto .7rem; }
     .photo-slot strong { display: block; color: var(--text); font-size: 1rem; text-transform: uppercase; letter-spacing: .06em; }
     .photo-slot small { display: block; margin-top: .3rem; font-size: .8rem; }
+    .photo-slot .arquivo { display: block; margin-top: .6rem; font-family: ui-monospace, Consolas, monospace; font-size: .75rem; color: var(--green); }
+    .photo-slot.has-photo { border: 0; padding: 0; background: #000; overflow: hidden; }
+    .photo-slot.has-photo::before, .photo-slot.has-photo > div { display: none; }
+    .photo-slot > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+    .gallery .photo-slot.has-photo:hover > img { transform: scale(1.05); }
     .photo-slot::before { content: "FOTO REAL AQUI"; position: absolute; top: 12px; left: 12px; background: var(--green); color: #031000; font-size: .66rem; font-weight: 800; letter-spacing: .12em; padding: .25rem .55rem; border-radius: 5px; }
 
     /* Sobre */
@@ -413,8 +418,8 @@
             <li>Matrícula 100% online, rápida e sem burocracia</li>
           </ul>
         </div>
-        <!-- TROCAR: substitua esta div por <img src="assets/SUA-FOTO.jpg" alt="..." style="border-radius:14px;aspect-ratio:4/3;object-fit:cover;width:100%"> -->
-        <div class="photo-slot reveal">
+        <!-- FOTO: envie assets/fotos/ambiente.jpg (veja assets/fotos/LEIA-ME.txt) -->
+        <div class="photo-slot reveal" data-foto="ambiente" data-alt="Ambiente interno da academia Koncept Experience no Gama, Brasília - DF">
           <div>
             <svg viewBox="0 0 24 24"><path d="M3 7h3l2-3h8l2 3h3v13H3z"/><circle cx="12" cy="13" r="4"/></svg>
             <strong>Ambiente interno</strong>
@@ -472,18 +477,18 @@
           <h2 class="section-title">Conheça a <span class="hl">Koncept</span></h2>
           <p class="lead">Um espaço pensado para você treinar com conforto, foco e muita energia. Venha conhecer de perto!</p>
         </div>
-        <!-- TROCAR: substitua cada .photo-slot por <img src="assets/SUA-FOTO.jpg" alt="..." style="width:100%;height:100%;object-fit:cover;border-radius:14px"> -->
+        <!-- FOTOS: envie os arquivos para assets/fotos/ com os nomes indicados em data-foto (veja assets/fotos/LEIA-ME.txt) -->
         <div class="gallery">
-          <div class="photo-slot big reveal"><div>
+          <div class="photo-slot big reveal" data-foto="musculacao" data-alt="Área de musculação da Koncept Experience"><div>
             <svg viewBox="0 0 24 24"><path d="M3 7h3l2-3h8l2 3h3v13H3z"/><circle cx="12" cy="13" r="4"/></svg>
             <strong>Área de musculação</strong><small>sugestão 1200×1200px</small></div></div>
-          <div class="photo-slot reveal"><div>
+          <div class="photo-slot reveal" data-foto="cardio" data-alt="Área de cardio da Koncept Experience"><div>
             <svg viewBox="0 0 24 24"><path d="M3 7h3l2-3h8l2 3h3v13H3z"/><circle cx="12" cy="13" r="4"/></svg>
             <strong>Cardio</strong><small>sugestão 800×600px</small></div></div>
-          <div class="photo-slot reveal"><div>
+          <div class="photo-slot reveal" data-foto="sala-aulas" data-alt="Sala de aulas coletivas da Koncept Experience"><div>
             <svg viewBox="0 0 24 24"><path d="M3 7h3l2-3h8l2 3h3v13H3z"/><circle cx="12" cy="13" r="4"/></svg>
             <strong>Sala de aulas</strong><small>sugestão 800×600px</small></div></div>
-          <div class="photo-slot wide reveal"><div>
+          <div class="photo-slot wide reveal" data-foto="fachada" data-alt="Fachada da academia Koncept Experience no Setor Industrial do Gama"><div>
             <svg viewBox="0 0 24 24"><path d="M3 7h3l2-3h8l2 3h3v13H3z"/><circle cx="12" cy="13" r="4"/></svg>
             <strong>Fachada</strong><small>sugestão 1200×600px</small></div></div>
         </div>
@@ -650,6 +655,28 @@
     }
     atualizarAulas();
     setInterval(atualizarAulas, 30000);
+
+    /* ===== Fotos reais =====
+       Cada espaço com data-foto="nome" procura assets/fotos/nome.jpg (ou .jpeg, .png, .webp).
+       Achou → mostra a foto. Não achou → mantém o aviso "FOTO REAL AQUI". */
+    const EXTENSOES = ["jpg", "jpeg", "png", "webp", "JPG", "JPEG", "PNG"];
+    document.querySelectorAll(".photo-slot[data-foto]").forEach((slot) => {
+      const nome = slot.dataset.foto;
+      const aviso = document.createElement("span");
+      aviso.className = "arquivo";
+      aviso.textContent = `assets/fotos/${nome}.jpg`;
+      slot.querySelector("div").append(aviso);
+      const tentar = (i) => {
+        if (i >= EXTENSOES.length) return;
+        const img = new Image();
+        img.alt = slot.dataset.alt || "";
+        img.decoding = "async";
+        img.onload = () => { slot.prepend(img); slot.classList.add("has-photo"); };
+        img.onerror = () => tentar(i + 1);
+        img.src = `assets/fotos/${nome}.${EXTENSOES[i]}`;
+      };
+      tentar(0);
+    });
   </script>
 </body>
 </html>
