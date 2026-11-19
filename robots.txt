@@ -1,0 +1,21 @@
+# Troque SEU-DOMINIO.com.br pelo endereço real do site antes de publicar
+User-agent: *
+Allow: /
+
+# Robôs de IA (GEO): permitidos para que a academia apareça em respostas do ChatGPT, Gemini, Perplexity etc.
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-SearchBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://SEU-DOMINIO.com.br/sitemap.xml

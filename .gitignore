@@ -1,0 +1,15 @@
+# Configuração local (servidor de visualização)
+.claude/
+.vercel/
+
+# Arquivos do sistema
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Imagens antigas que não são mais usadas no site (Planet Fit / versões anteriores)
+assets/esteiras.webp
+assets/musculacao.webp
+assets/logo.svg
+assets/koncept-logo.png
+assets/cronograma-original.png
